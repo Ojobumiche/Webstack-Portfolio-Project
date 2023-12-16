@@ -7,7 +7,8 @@
 </head>
 <body>
     <h1>Login Now</h1>
-    <form method="POST" action="login_user/>"
+    {% csrf_token %}
+    <form method="POST" action="{%login_user/%}>"
         <p>User name</p>
         <input type="text" value="username" />
         <p>password</p>
