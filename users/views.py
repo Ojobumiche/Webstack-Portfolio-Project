@@ -19,7 +19,7 @@ def register(request):
     else:
         form = RegisterCustomerForm()
         context = {'form': form}
-        return render(request, 'users/register_customer.html', context)  # Corrected 'redirect' to 'render'
+        return render(request, 'users/register_customer.html', context) 
 
 # Login view
 def login_user(request):
