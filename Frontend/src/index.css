@@ -36,6 +36,9 @@ code {
   margin-left: 18px;
 }
 
+.mg-5 {
+  margin-left: 5px;
+}
 
 .my-container{
   width:96%;
@@ -149,4 +152,97 @@ code {
 .white span:hover {
   color: white;
   text-decoration: underline;
+}
+
+.navdash {
+  background-color: green;
+  display: flex;
+  align-items: center;
+  height: 8vh;
+  gap: 100px;
+}
+
+.nav_brand {
+  text-transform: uppercase;
+  margin-left: 125px;
+}
+
+.userpicture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.byright {
+  margin-left: 900px;
+  display: flex;
+  align-items: center;
+}
+
+.angle-icon {
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 20px;
+  display: flex;
+  border-width: 0.1px;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 43px;
+  margin-left: 140px;
+  background-color: white;
+  padding: 20px;
+  list-style: none;
+  border-color: black;
+  border: 0.1px lightblue solid;
+  width: 155px;
+
+}
+
+.dropdown-item {
+  margin-bottom: 5px;
+  color: black;
+}
+
+.dropdown.active {
+  display: block;
+}
+
+.linkside{
+  display: flex;
+  color: white;
+  padding: 10px 15px;
+  gap: 10px;
+  transition: all 0.5s;
+  text-decoration: none;
+}
+
+.link:hover{
+  color: #000;
+  transition: all 0.5s;
+}
+.active{
+  color: #000;
+}
+.link_text{
+  font-size: 12px;
+}
+
+.sidebar {
+  background-color: green;
+  position: fixed;
+  top: 55px;
+  left: 0;
+}
+
+.top_section{
+  display: flex;
+  align-items:center;
+}
+
+.container {
+  left: 0;
+  top: 0 !important;
 }

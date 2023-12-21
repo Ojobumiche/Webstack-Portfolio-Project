@@ -19,7 +19,7 @@ function Navbar() {
 return (
     <nav className="nav">
         <Link to="/" className="nav_brand">
-            <div>Train</div>
+            <div>BSP Train</div>
         </Link>
         <ul className={active}>
             <li className="nav_iem">

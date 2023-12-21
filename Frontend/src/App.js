@@ -7,6 +7,8 @@ import "./typography.css";
 import About from "./components/about";
 import Login from "./components/login";
 import signup from "./components/signup";
+import Dashboard from "./dashboard/dashboard";
+import BuyTicketPage from "./dashboard/buyticket";
 
 function App() {
 
@@ -18,6 +20,8 @@ function App() {
            <Route path="/about" Component={About} />
            <Route path="/login" Component={Login} />
            <Route path="/signup" Component={signup} />
+           <Route path="/our-team" Component={Dashboard} />
+           <Route path="/wp-admin/buy-ticket" Component={BuyTicketPage} />
 
          </Routes>
       </BrowserRouter>
