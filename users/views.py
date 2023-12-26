@@ -5,7 +5,7 @@ from .form import RegisterCustomerForm
 
 # Registration view
 def register(request):
-    if request.method == 'POST':  # Corrected 'methods' to 'method'
+    if request.method == 'POST':  
         form = RegisterCustomerForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
@@ -23,7 +23,7 @@ def register(request):
 
 # Login view
 def login_user(request):
-    if request.method == 'POST':  # Corrected 'methods' to 'method'
+    if request.method == 'POST': 
         username = request.POST.get('username')
         password = request.POST.get('password')
 
@@ -42,4 +42,4 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.info(request, 'Your session has ended. Please log in to continue.')
-    return redirect('login')  # Removed '.html' as it's usually the name of the URL, not the template file
+    return redirect('login')  
