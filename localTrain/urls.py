@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers
-from users import views
+from rest_framework.routers import DefaultRouter
+from users.views import Userview
+
+router = DefaultRouter()
+router.register( 'UserSerializer',  Userview)
 
 
 urlpatterns = [
@@ -25,5 +28,5 @@ urlpatterns = [
     path('admin/',admin.site.urls),
     path('accounts/', include('users.urls')),
     path('ticket/', include('ticket.urls')),
-    path('api/', include(routers.urls)),
+    path('api/', include(router.urls)),
 ]
