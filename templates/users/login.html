@@ -1,9 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
 <h1>Login</h1>
 <form method="POST" action="dashboard/">
-    <input type="text" name="name" value="username"><br>
-    <p>
-    <input type="password" name="password" value="password"><br>
-    </p>
-    <button type="submit">submit</button>
+    {% csrf_token %}
+    {% load widget_tweaks %} 
 
+    <label for="id_name">Username:</label>
+    <input type="text" name="name" id="id_name" value=""><br>
+
+    <label for="id_password">Password:</label>
+    <input type="password" name="password" id="id_password" value=""><br>
+
+    <button type="submit">Submit</button>
 </form>
