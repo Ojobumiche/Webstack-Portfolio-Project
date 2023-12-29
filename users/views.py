@@ -2,7 +2,15 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .form import RegisterCustomerForm 
+from rest_framework import viewsets
+from .models import User
+from .serializer import UserSerializer
 
+# Create viewsets base class
+class Userview(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+    
 # Registration view
 def register(request):
     if request.method == 'POST':  
