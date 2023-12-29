@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'dashboard',
     'ticket',
     'widget_tweaks',
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
