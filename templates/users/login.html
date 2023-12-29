@@ -1,15 +1,15 @@
-{% extends "login_user/base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
+<h1>Login</h1>
+<form method="POST" action="dashboard/">
+    {% csrf_token %}
+    {% load widget_tweaks %} 
 
-{% block contents %}
-{% endblock contents %}
+    <label for="id_name">Username:</label>
+    <input type="text" name="name" id="id_name" value=""><br>
 
-    <h1>Login Now</h1
-    <form method="POST" action="{% url 'login_user' %}">
-        {% csrf_token %}
-        <p>User name</p>
-        <input type="text" name="username" value="{{ request.POST.username }}" />
-        <p>password</p>
-        <input type="password" name="password" value="{{ request.POST.password }}" /><br>
-        <button type="submit">submit</button>
+    <label for="id_password">Password:</label>
+    <input type="password" name="password" id="id_password" value=""><br>
 
-    </form>
+    <button type="submit">Submit</button>
+</form>
