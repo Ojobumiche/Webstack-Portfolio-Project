@@ -7,6 +7,12 @@ from .models import User
 from .serializer import UserSerializer
 
 # Create viewsets base class
+"""
+The viewsets base class provides the 
+implementation for CRUD operations
+by default. This code specifies 
+the serializer_class and the queryset.
+"""
 class Userview(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
