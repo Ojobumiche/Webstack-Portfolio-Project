@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'user/base.html' %}
 
 {% block content %}
 
 {% if request.user.is_customer %}
-
+<p> {{Login}} </p>
 <section class="container mt-5">
     <div class="p-5 mb-4 big-light rounded-3">
         <div class="container-fluid p-5">

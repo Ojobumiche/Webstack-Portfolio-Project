@@ -16,10 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from users.views import Userview
+
+router = DefaultRouter()
+router.register( 'UserSerializer',  Userview)
+
 
 urlpatterns = [
     path('', include('dashboard.urls')),
     path('admin/',admin.site.urls),
     path('accounts/', include('users.urls')),
     path('ticket/', include('ticket.urls')),
+    path('api/', include(router.urls)),
 ]

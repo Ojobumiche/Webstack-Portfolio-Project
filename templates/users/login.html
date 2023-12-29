@@ -1,11 +1,15 @@
+{% extends "login_user/base.html" %}
+
+{% block contents %}
+{% endblock contents %}
 
     <h1>Login Now</h1
     <form method="POST" action="{% url 'login_user' %}">
         {% csrf_token %}
         <p>User name</p>
-        <input type="text" placeholder="Enter Username" name="username" />
+        <input type="text" name="username" value="{{ request.POST.username }}" />
         <p>password</p>
-        <input type="password" placeholder="Password" name="password" /><br>
+        <input type="password" name="password" value="{{ request.POST.password }}" /><br>
         <button type="submit">submit</button>
 
     </form>
