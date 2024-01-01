@@ -4,6 +4,21 @@ from .models import Ticket
 from .form import UpdateTicketForm
 from .form import CreateTicketForm
 import datetime
+from .serializer import TicketSerializer
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.decorators import api_view
+
+
+
+@api_view(['POST'])
+def create_ticket_api(request):
+    if request.method == 'POST':
+        serializer = TicketSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status)
 
 
 """

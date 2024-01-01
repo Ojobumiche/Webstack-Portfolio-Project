@@ -5,6 +5,7 @@ from .form import RegisterCustomerForm
 from rest_framework import viewsets
 from .models import User
 from .serializer import UserSerializer
+from rest_framework import generics
 
 # Create viewsets base class
 """
@@ -15,7 +16,7 @@ the serializer_class and the queryset.
 """
 class Userview(viewsets.ModelViewSet):
     serializer_class = UserSerializer
-    queryset = User.objects.all()
+    queryset = User.objects.all() 
     
 # Registration view
 def register(request):

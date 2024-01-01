@@ -10,6 +10,6 @@ urlpatterns = [
     path('accept-ticket/<int:pk>/', views.accept_ticket, name='accept-ticket'),
     path('closed-ticket/<int:pk>/', views.closed_ticket, name= 'closed-ticket'),
     path('workspace/', views.workspace, name = 'workspace'),
-    path('all-closed-ticket', views.all_closed_tickets, name='all-closed-ticket'),
+    path('all-closed-ticket/', views.all_closed_tickets, name='all-closed-ticket'),
     
 ]
