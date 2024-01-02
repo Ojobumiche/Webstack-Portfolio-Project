@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'dashboard',
+    'home',
     'ticket',
     'widget_tweaks',
     'rest_framework',
@@ -52,9 +52,9 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -137,6 +137,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
-CORS_ORIGIN_ALLOW_ALL = True
-'http://127.0.0.1:3000',
-'http://127.0.0.1:8000',
+CORS_ALLOWED_ORIGIN = [
+    'http://localhost:3000',
+]
