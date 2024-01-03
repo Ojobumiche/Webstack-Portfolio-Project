@@ -6,6 +6,11 @@ from rest_framework import viewsets
 from .models import User
 from .serializer import UserSerializer
 from rest_framework import generics
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from.models import UserProfile
+import json
+
 
 # Create viewsets base class
 """
@@ -17,7 +22,13 @@ the serializer_class and the queryset.
 class Userview(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all() 
+
+# ticket view
+def buy_ticket(request):
+    return render(request, 'buy_ticket.html')
     
+    
+       
 # Registration view
 def register(request):
     if request.method == 'POST':  
@@ -37,19 +48,28 @@ def register(request):
         return render(request, 'users/register_customer.html', context) 
 
 # Login view
-def login_user(request):
+@csrf_exempt
+def login(request):
     if request.method == 'POST': 
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(request, username=username, password=password)
-        if user is not None and user.is_active:
-            login(request, user)
-            messages.info(request, 'Login successful. Please enjoy your session.')
-            return redirect('dashboard')
+        data = json.loads(request.body)
+        
+        username = data.POST.get('username')
+        password = data.POST.get('password')
+        user_exist = UserProfile.objects.filter(username=username, password=password)
+        if user_exist:
+            return JsonResponse({'success': True})
         else:
-            messages.warning(request, 'Something went wrong. Please check your form input.')
-            return redirect('login')
+            return JsonResponse({'success': False, 'message': 'Invalid credentials'})
+    
+
+        # user= authenticate(request, username=username, password=password).exists()
+        # if user is not None and user.is_active:
+        #     login(request, user)
+        #     messages.info(request, 'Login successful. Please enjoy your session.')
+        #     return redirect('dashboard')
+        #     else:
+        # messages.warning(request, 'Something went wrong. Please check your form input.')
+            # return redirect('login')
     else:
         return render(request, 'users/login.html')
 
