@@ -1,0 +1,38 @@
+.flex {
+    display: flex;
+    align-items: center;
+}
+  
+.label {
+    display: block;
+}
+  
+.input {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+  
+.mg-3 {
+    margin-right: 15px;
+}
+  
+.but {
+    padding: 10px 20px;
+    background-color: #4caf50; /* Green color */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+.but:hover {
+    background-color: #45a049; /* Darker green color on hover */
+}
+  
+.fa-exchange {
+    font-size: 20px;
+    margin: 0 10px;
+}
+  

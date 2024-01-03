@@ -56,6 +56,21 @@ code {
   border: 1px solid #ccc; 
 }
 
+.bo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.my-bottom-20 {
+  padding-bottom: 20px;
+}
+
+.my-bottom-90 {
+  padding-bottom: 100px;
+}
+
 .center {
   text-align: center;
 }
@@ -79,7 +94,7 @@ code {
 .BOXX {
   align-items: center;
   width: 500px;
-  height: 200px;
+  height: 300px;
   background-color: white;
   display: block;
   padding-top: 20px;
@@ -88,7 +103,7 @@ code {
 .BOXXX {
   align-items: center;
   width: 500px;
-  height: 440px;
+  height: 400px;
   background-color: white;
   display: block;
   padding-top: 20px;
@@ -235,6 +250,7 @@ code {
   position: fixed;
   top: 55px;
   left: 0;
+  height: 650px;
 }
 
 .top_section{
@@ -246,3 +262,154 @@ code {
   left: 0;
   top: 0 !important;
 }
+
+.error-message {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 5px;
+  border-color: red;
+  color: red;
+  border-width: 0.2px;
+}
+
+.success-message {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 5px;
+  color: green;
+}
+
+.ourteam {
+  width: 200px;
+  height: 270px;
+  background-color: #f8f8f6;
+}
+
+.pic {
+  width: 200px;
+  height: 200px;
+}
+
+.green {
+  color: green;
+}
+
+.mg-10 {
+  margin-left: 50px;
+}
+
+.bg-color-code-2 {
+  background-color: #f8f8f6;
+}
+
+.footer {
+  width: 100%;
+  background-color: #f8f8f6;
+}
+
+.flex {
+  display: flex;
+}
+
+.px25 {
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+.but {
+  background-color: green;
+  color: white;
+  border-radius: 20px;
+  width: 100px;
+  border: none;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.inputsearch {
+  margin-left: 3px;
+  padding: 8px;
+  border: 0.1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease-in-out; /* Add transition for smooth effect */
+}
+
+.circle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offsearch {
+  margin-left: 65px;
+}
+
+.bg-ash {
+  background-color: beige;
+}
+
+.logo {
+  margin-left: 150px;
+}
+
+.trainpic {
+  width: 850px;
+  height: 700px;
+}
+
+/* Pixel 7 Mobile Device */
+@media screen and (max-width: 767px) {
+  .logo {
+    margin-left: 10px;
+  }
+
+  .navbar-toggler {
+    background-color: black;
+  }
+
+  .trainpic {
+    width: 400px;
+    height: 320px;
+  }
+}
+
+
+/* Additional Mobile Screen Sizes */
+@media screen and (max-width: 320px) {
+  .trainpic {
+    width: 380px;
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .trainpic {
+    width: 350px;
+    height: 320px;
+  }
+}
+
+/* Tablets */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .trainpic {
+    width: 680px;
+    height: 620px;
+  }
+}
+
+/* Landscape Tablets */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+  .trainpic {
+    width: 680px;
+    height: 620px;
+  }
+}
+
+
+
+
+

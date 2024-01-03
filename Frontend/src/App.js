@@ -4,11 +4,12 @@ import Home from "./pages/home";
 import "./all.css";
 import "./index.css";
 import "./typography.css";
-import About from "./components/about";
 import Login from "./components/login";
 import signup from "./components/signup";
+import OurTeam from "./components/ourteam";
 import Dashboard from "./dashboard/dashboard";
-import BuyTicketPage from "./dashboard/buyticket";
+import Ticketbuy from "./dashboard/ticketbooking/finalbuyticket";
+import Footerbar from "./components/footerr";
 
 function App() {
 
@@ -17,11 +18,12 @@ function App() {
        <BrowserRouter>
          <Routes>
            <Route path="/" exact Component={Home} />
-           <Route path="/about" Component={About} />
+           <Route path="/about" Component={Footerbar} />
            <Route path="/login" Component={Login} />
            <Route path="/signup" Component={signup} />
-           <Route path="/our-team" Component={Dashboard} />
-           <Route path="/wp-admin/buy-ticket" Component={BuyTicketPage} />
+           <Route path="/our-team" Component={OurTeam} />
+           <Route path="/wp-admin/dashboard" Component={Dashboard} />
+           <Route path="/wp-admin/buy-ticket" Component={Ticketbuy} />
 
          </Routes>
       </BrowserRouter>

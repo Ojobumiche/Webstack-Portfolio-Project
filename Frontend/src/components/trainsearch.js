@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BiTransferAlt } from "react-icons/bi";
 
 
 
@@ -18,18 +19,19 @@ const Trainsearch = ({ onSearch }) => {
     };
     return(<>
        <div className="down-4 my-col-10 bg-white my-bottom-50">
-        <div className="down-2">
-         <label className="off-1">
+        <div className="down-4 flex">
+         <label className="offsearch">
             From:
-            <input
+            <input className="inputsearch"
              type="text"
              value={from}
              onChange={(e) => setFrom(e.target.value)}
             />
          </label>
+         <div className="px25 circle white"><BiTransferAlt /></div>
          <label className="mg-3">
             To:
-            <input
+            <input className="inputsearch"
              type="text"
              value={to}
              onChange={(e) => setTo(e.target.value)}
@@ -37,13 +39,13 @@ const Trainsearch = ({ onSearch }) => {
          </label>
          <label className="mg-3">
             Departure Time:
-            <input
+            <input className="inputsearch"
              type="text"
              value={departuretime}
              onChange={(e) => setDepartureTime(e.target.value)}
             />
          </label>
-         <button className="mg-3" onClick={handleSearch}>Search</button>
+         <button className="but" onClick={handleSearch}>Search</button>
         </div>   
        </div>
     </>)
