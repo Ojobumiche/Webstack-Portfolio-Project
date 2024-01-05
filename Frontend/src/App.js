@@ -4,12 +4,12 @@ import Home from "./pages/home";
 import "./all.css";
 import "./index.css";
 import "./typography.css";
-import Login from "./components/login";
 import signup from "./components/signup";
-import OurTeam from "./components/ourteam";
 import Dashboard from "./dashboard/dashboard";
 import Ticketbuy from "./dashboard/ticketbooking/finalbuyticket";
-import Footerbar from "./components/footerr";
+import About from "./components/about";
+import Ourteamm from "./components/ourteamm";
+import Loginn from "./components/loginn";
 
 function App() {
 
@@ -18,10 +18,10 @@ function App() {
        <BrowserRouter>
          <Routes>
            <Route path="/" exact Component={Home} />
-           <Route path="/about" Component={Footerbar} />
-           <Route path="/login" Component={Login} />
+           <Route path="/about" Component={About} />
+           <Route path="/login" Component={Loginn} />
            <Route path="/signup" Component={signup} />
-           <Route path="/our-team" Component={OurTeam} />
+           <Route path="/our-team" Component={Ourteamm} />
            <Route path="/wp-admin/dashboard" Component={Dashboard} />
            <Route path="/wp-admin/buy-ticket" Component={Ticketbuy} />
 

@@ -32,8 +32,12 @@ const Navbarhome = () => {
               </li>
             </ul>
             <div className="ml-auto">
-              <button className="btn btn-success mr-2">Login</button>
-              <button className="btn btn-success">Create free account</button>
+              <Link to="/login">
+                <button className="btn btn-success mr-2">Login</button>
+              </Link>
+              <Link to="/signup">
+                <button className="btn btn-success">Create free account</button>
+              </Link>
             </div>
           </div>
         </div>
