@@ -9,5 +9,5 @@ class RegisterCustomerForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ('username', 'email', 'is_customer', 'is_engineer')
+        fields = ('username', 'email')
 
