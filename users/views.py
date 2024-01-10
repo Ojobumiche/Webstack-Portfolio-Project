@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from.models import UserProfile
 import json
+from django.http import HttpResponse
 
 
 # Create viewsets base class
@@ -41,25 +42,29 @@ def register(request):
             return redirect('login')
         else:
             messages.warning(request, 'Something went wrong. Please check form input.')
-            return redirect('register_customer')
+            return redirect('register')
     else:
         form = RegisterCustomerForm()
         context = {'form': form}
-        return render(request, 'users/register_customer.html', context) 
+        return render(request, 'users/register.html', context) 
 
 # Login view
-@csrf_exempt
+# @csrf_exempt
 def login(request):
     if request.method == 'POST': 
-        data = json.loads(request.body)
-        
-        username = data.POST.get('username')
-        password = data.POST.get('password')
-        user_exist = UserProfile.objects.filter(username=username, password=password)
+        try:
+            data = json.loads(request.body.decode('utf-8'))
+        except json.JSONDecodeError:
+            return JsonResponse({'error':'Invalid JSON data in the request body'}, status=400)
+        username = data.get('username')
+        password = data.get('password')
+        user_exist = UserProfile.objects.filter(username=username, password=password).exists()
         if user_exist:
-            return JsonResponse({'success': True})
+            return JsonResponse({'success':'login successful'}, status= 200)
         else:
-            return JsonResponse({'success': False, 'message': 'Invalid credentials'})
+            return JsonResponse({'error':'username or password'}, status=400)
+    else:
+        return JsonResponse({'error':'invalid request method'}, status=400)
     
 
         # user= authenticate(request, username=username, password=password).exists()
@@ -67,14 +72,24 @@ def login(request):
         #     login(request, user)
         #     messages.info(request, 'Login successful. Please enjoy your session.')
         #     return redirect('dashboard')
-        #     else:
-        # messages.warning(request, 'Something went wrong. Please check your form input.')
-            # return redirect('login')
-    else:
-        return render(request, 'users/login.html')
+        # else:
+        #     messages.warning(request, 'Something went wrong. Please check your form input.')
+        #     return redirect('login')
+    # else:
+    #     return render(request, 'login.html')
+            
+    # else:
+    #     return render(request, 'users/login.html')
+
+    
 
 # Logout view
 def logout_user(request):
     logout(request)
     messages.info(request, 'Your session has ended. Please log in to continue.')
     return redirect('login')
+
+def home(request):
+    
+    return HttpResponse('hello, this your home')
+    
