@@ -7,10 +7,9 @@ from .models import User
 from .serializer import UserSerializer
 from rest_framework import generics
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from.models import UserProfile
 import json
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create viewsets base class
@@ -42,46 +41,48 @@ def register(request):
             return redirect('login')
         else:
             messages.warning(request, 'Something went wrong. Please check form input.')
-            return redirect('register')
+            return redirect('register-customer')
     else:
         form = RegisterCustomerForm()
         context = {'form': form}
-        return render(request, 'users/register.html', context) 
+        return render(request, 'users/register_customer.html', context) 
 
 # Login view
-# @csrf_exempt
+@csrf_exempt  # Use this decorator to allow POST requests without CSRF token (for demonstration purposes only)
 def login(request):
-    if request.method == 'POST': 
+    # Check if the request method is POST
+    if request.method == 'POST':
         try:
+            # Decode the JSON data from the request body
             data = json.loads(request.body.decode('utf-8'))
+            # Extract username and password from the JSON data
+            username = data.get('username')
+            password = data.get('password')
         except json.JSONDecodeError:
-            return JsonResponse({'error':'Invalid JSON data in the request body'}, status=400)
-        username = data.get('username')
-        password = data.get('password')
-        user_exist = UserProfile.objects.filter(username=username, password=password).exists()
-        if user_exist:
-            return JsonResponse({'success':'login successful'}, status= 200)
+            # Return error response if JSON decoding fails
+            return JsonResponse({'error': 'Invalid JSON data in the request body'}, status=400)
+
+        # Check if both username and password are provided
+        if username and password:
+            # Authenticate user using Django's authenticate function
+            user = authenticate(request, username=username, password=password)
+
+            # Check if authentication is successful
+            if user is not None:
+                # Login the user using Django's login function
+                login(request, user)
+                # Redirect the user to the dashboard (replace 'dashboard' with your actual URL name)
+                return redirect('dashboard')
+            else:
+                # Return error response if authentication fails
+                return JsonResponse({'error': 'Invalid username or password'}, status=400)
         else:
-            return JsonResponse({'error':'username or password'}, status=400)
+            # Return error response if username or password is missing
+            return JsonResponse({'error': 'Username and password are required fields'}, status=400)
     else:
-        return JsonResponse({'error':'invalid request method'}, status=400)
-    
+        # Return error response if the request method is not POST
+        return JsonResponse({'error': 'Invalid request method'}, status=400)
 
-        # user= authenticate(request, username=username, password=password).exists()
-        # if user is not None and user.is_active:
-        #     login(request, user)
-        #     messages.info(request, 'Login successful. Please enjoy your session.')
-        #     return redirect('dashboard')
-        # else:
-        #     messages.warning(request, 'Something went wrong. Please check your form input.')
-        #     return redirect('login')
-    # else:
-    #     return render(request, 'login.html')
-            
-    # else:
-    #     return render(request, 'users/login.html')
-
-    
 
 # Logout view
 def logout_user(request):
@@ -89,7 +90,4 @@ def logout_user(request):
     messages.info(request, 'Your session has ended. Please log in to continue.')
     return redirect('login')
 
-def home(request):
-    
-    return HttpResponse('hello, this your home')
     
