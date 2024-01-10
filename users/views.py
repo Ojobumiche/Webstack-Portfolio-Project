@@ -45,7 +45,7 @@ def register(request):
     else:
         form = RegisterCustomerForm()
         context = {'form': form}
-        return render(request, 'users/register_customer.html', context) 
+        return render(request, 'users/register.html', context) 
 
 # Login view
 @csrf_exempt  # Use this decorator to allow POST requests without CSRF token (for demonstration purposes only)

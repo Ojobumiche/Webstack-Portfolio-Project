@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'home',
+    'dashboard',
     'ticket',
     'widget_tweaks',
     'rest_framework',

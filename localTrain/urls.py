@@ -24,7 +24,7 @@ router.register('UserSerializer',  Userview)
 
 
 urlpatterns = [
-    path('', include('home.urls')),
+    path('', include('dashboard.urls')),
     path('admin/',admin.site.urls),
     path('accounts/', include('users.urls')),
     path('ticket/', include('ticket.urls')),
