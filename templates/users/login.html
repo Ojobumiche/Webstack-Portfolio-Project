@@ -1,6 +1,6 @@
 {% block content %}
   <p>Login</p>
-  <form method="POST" enctype="application/json">
+  <form method="POST"  action="dashboard/">
     {% csrf_token %}
     
     <label for="username">User Name:</label>
