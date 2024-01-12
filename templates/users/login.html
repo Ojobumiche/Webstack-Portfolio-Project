@@ -1,7 +1,7 @@
 {% block content %}
   <p>Login</p>
-  <form method="POST"  action="dashboard/">
-    {% csrf_token %}
+  <form method="Get"  action="dashboard/">
+    {% comment %} {% csrf_token %} {% endcomment %}
     
     <label for="username">User Name:</label>
     <input type="text" name="username" id="username" required><br>
