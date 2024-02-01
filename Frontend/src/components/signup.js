@@ -23,7 +23,7 @@ const Signup = () => {
 
   const handleRegistration = () => {
     // backend API endpoint
-    const apiUrl = "http://localhost:8080/backend/api/signup.php";
+    const apiUrl = "http://localhost:8080/backend/api/signup.py";
 
     // Request payload
     const requestData = {
