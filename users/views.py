@@ -48,41 +48,27 @@ def register(request):
         return render(request, 'users/register.html', context) 
 
 # Login view
-@csrf_exempt  # Use this decorator to allow POST requests without CSRF token (for demonstration purposes only)
-def login(request):
+def login_view(request):
     # Check if the request method is POST
     if request.method == 'POST':
         try:
-            # Decode the JSON data from the request body
-            data = json.loads(request.body.decode('utf-8'))
-            # Extract username and password from the JSON data
-            username = data.get('username')
-            password = data.get('password')
-        except json.JSONDecodeError:
-            # Return error response if JSON decoding fails
-            return JsonResponse({'error': 'Invalid JSON data in the request body'}, status=400)
-
-        # Check if both username and password are provided
-        if username and password:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+        except:
             # Authenticate user using Django's authenticate function
             user = authenticate(request, username=username, password=password)
-
             # Check if authentication is successful
-            if user is not None:
+            if user is not None and user.is_active:
                 # Login the user using Django's login function
                 login(request, user)
+                messages.info(request, 'login successfully, please enjoy your session')
                 # Redirect the user to the dashboard (replace 'dashboard' with your actual URL name)
                 return redirect('dashboard')
             else:
-                # Return error response if authentication fails
-                return JsonResponse({'error': 'Invalid username or password'}, status=400)
+                messages.warning(request, 'something went wrong, please check form input')
+                return redirect('login')
         else:
-            # Return error response if username or password is missing
-            return JsonResponse({'error': 'Username and password are required fields'}, status=400)
-    else:
-        # Return error response if the request method is not POST
-        return JsonResponse({'error': 'Invalid request method'}, status=400)
-
+            return render(request, 'users/login_view.html')
 
 # Logout view
 def logout_user(request):

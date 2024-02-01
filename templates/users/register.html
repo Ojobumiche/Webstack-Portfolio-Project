@@ -1,6 +1,6 @@
 {% block content %}
   <h1>Register here!</h1>
-  <form method="POST" action="{% url 'login' %}">
+  <form method="POST" action="{% url 'login_view' %}">
     {% csrf_token %}
     <p>Enter your First Name</p>
     <label for="firstName">First Name:</label>

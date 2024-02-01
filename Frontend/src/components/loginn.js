@@ -21,7 +21,7 @@ const Loginn = () => {
     if (email && password) {
       try {
         const response = await axios.post(
-          "http://localhost:8080/backend/api/login.php",
+          "http://localhost:8080/backend/api/login.py",
           {
             email: email,
             pass: password,
